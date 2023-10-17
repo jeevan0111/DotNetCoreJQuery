@@ -1,4 +1,34 @@
 ﻿<Properties StartupConfiguration="{BFA90FB1-AFCF-497E-BCDF-F135687386FF}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/jeevanchandra/Documents/Jeevan/Work/DotnetProjects/DotNetCoreJQuery/DotNetCoreJQuery/Controllers/StudentController.cs" relfile="DotNetCoreJQuery/Controllers/StudentController.cs" line="51" column="17" />
+      <Breakpoint file="/Users/jeevanchandra/Documents/Jeevan/Work/DotnetProjects/DotNetCoreJQuery/DotNetCoreJQuery/DAL/StudentDAL.cs" relfile="DotNetCoreJQuery/DAL/StudentDAL.cs" line="54" column="13" />
+      <Breakpoint file="/Users/jeevanchandra/Documents/Jeevan/Work/DotnetProjects/DotNetCoreJQuery/DotNetCoreJQuery/Controllers/UserRegController.cs" relfile="DotNetCoreJQuery/Controllers/UserRegController.cs" line="22" column="13" />
+      <Breakpoint file="/Users/jeevanchandra/Documents/Jeevan/Work/DotnetProjects/DotNetCoreJQuery/DotNetCoreJQuery/Helpers/MyCustomValidationAttribute.cs" relfile="DotNetCoreJQuery/Helpers/MyCustomValidationAttribute.cs" line="10" column="13" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DotNetCoreJQuery FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.DotNetCoreJQuery PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DotNetCoreJQuery/Program.cs">
+    <Files>
+      <File FileName="DotNetCoreJQuery/Controllers/UserRegController.cs" Line="23" Column="6" />
+      <File FileName="DotNetCoreJQuery/Program.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="DotNetCoreJQuery">
+            <Node name="DotNetCoreJQuery" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
