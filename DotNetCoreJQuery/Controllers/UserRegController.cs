@@ -24,7 +24,7 @@ namespace DotNetCoreJQuery.Controllers
                 return View(model);
                 //return RedirectToAction("Index");
             }
-            //ModelState.AddModelError("", "** Error from controller!!!. Please fill all the mandatory fields.");
+            ModelState.AddModelError("", "** Error from controller!!!. Please fill all the mandatory fields.");
             return View();
         }
     }
