@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="row">
+    <div> First Value</div>
+    <div> <input type="text" id="txtVal1" /> </div>
+</div>
+<div class="row">
+    <div> Second Value</div>
+    <div> <input type="text" id="txtVal2" /> </div>
+</div>
+<div class="row">
+    <div> </div>
+    <div>
+        <a href="javascript:void(0)" class="btn btn-success" onclick="fnSum()">SUM</a>
+        <a href="javascript:void(0)" class="btn btn-success" onclick="fnMul()">Mul</a>
+        <a href="javascript:void(0)" class="btn btn-success" onclick="fnCalculate()">Calculate</a>
+    </div>
+</div>
+<div class="row">
+    <div> </div>
+    <div id="dvResult"> </div>
+</div>
+
+<script src="~/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+    function fnSum() {
+
+        var x = parseInt($("#txtVal1").val());
+        var y = parseInt($("#txtVal2").val());
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Add","Home")",
+            data: { num1: x, num2: y },
+            dataType: "text",
+            success: function (msg) {
+                console.log("Sum is :" + msg);
+                //alert(msg);
+                $("#dvResult").html("Sum is :" + msg);
+            },
+            error: function (req,status,error) {
+
+            }
+        });
+
+        /*
+        var x = parseInt($("#txtVal1").val());
+        var y = parseInt($("#txtVal2").val());
+        var sum = x + y;
+        $("#dvResult").html("Sum is :" + sum);
+        */
+    }
+
+
+    function fnMul() {
+
+        var x = parseInt($("#txtVal1").val());
+        var y = parseInt($("#txtVal2").val());
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Mul", "Home")",
+            data: { num1: x, num2: y },
+            dataType: "text",
+            success: function (msg) {
+                console.log("Mul is :" + msg);
+                //alert(msg);
+                $("#dvResult").html("Mul is :" + msg);
+            },
+            error: function (req, status, error) {
+
+            }
+        });
+    }
+
+    function fnCalculate() {
+        var x = parseInt($("#txtVal1").val());
+        var y = parseInt($("#txtVal2").val());
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("CalculateNumber","Home")",
+            data: { num1: x, num2: y },
+            dataType: "json",
+            success: function (msg) {
+                //console.log("Result is :" + msg);
+                var result = "Addition is :" + msg.add + " *** Multiply is :" + msg.multiply;
+                //alert(msg);
+                $("#dvResult").html(result);
+            },
+            error: function (req,status,error) {
+                $("#dvResult").html("Error!!! :" + error);
+            }
+        });
+    }
+
+    /*jQuery(document).ready(function () {
+        console.log('hello');
+        alert('test');
+    });*/
+</script>

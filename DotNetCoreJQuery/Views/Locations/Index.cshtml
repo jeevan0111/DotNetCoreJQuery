@@ -1,0 +1,164 @@
+@model DotNetCoreJQuery.Models.CitiesInfo
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Form Data</h1>
+
+        <div class="row">
+            <div class="col-md-3">Name</div>
+            <div class="col-md-9">
+                <input type="text" id="txtName" />
+                <span id="errNameDiv" style="color:red"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">Mobile</div>
+            <div class="col-md-9">
+                <input type="text" id="txtMobile" onkeypress="return IsNumberKey(event)" />
+                <span id="errMobileDiv" style="color:red"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">Email</div>
+            <div class="col-md-9">
+                <input type="text" id="txtEmail" />
+                <span id="errEmailDiv" style="color:red"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">Country</div>
+            <div class="col-md-9">
+                @*@<select id="ddlCountry">
+                    @foreach (var item in Model.CountryInfosList)
+                    {
+                        <option value="@item.CId">@item.CName</option>
+                    }
+                </select>*@
+                <select id="ddlCountry" asp-items="@(new SelectList(Model.CountryInfosList,"CId","CName"))" onchange="fnStateList()"> </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">State</div>
+            <div class="col-md-9">
+                <select id="ddlState">
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">City</div>
+            <div class="col-md-9">
+                <select id="ddlCity">
+                    <option value="">-- Select City --</option>
+                    <option value="1">Almora</option>
+                    <option value="2">Nainital</option>
+                    <option value="3">Delhi</option>
+                    <option value="4">Noida</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">Email</div>
+            <div class="col-md-9">
+                <a href="javascript:void(0)" onclick="SaveRecord()">SUBMIT</a>
+                <a href="javascript:void(0)">RESET</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+    function IsNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keycode;
+        if (charCode > 31 && (charCode < 48 || charCode >57)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    function SaveRecord() {
+        
+
+        if (!ValidateInfo()) {
+            return false;
+        }
+
+        alert('SaveRecord validation passed');
+    }
+
+    function ValidateInfo() {
+        var result = true;
+
+        if ($("#txtName").val().trim().length == 0) {
+            $("#errNameDiv").show();
+            $("#errNameDiv").text('Name is required');
+            result = false;
+        }
+        else {
+            $("#errNameDiv").hide();
+        }
+
+        if ($("#txtMobile").val().trim().length == 0) {
+            $("#errMobileDiv").show();
+            $("#errMobileDiv").text('Mobile is required');
+            result = false;
+        }
+        else {
+            $("#errMobileDiv").hide();
+        }
+
+        if ($("#txtEmail").val().trim().length == 0) {
+            $("#errEmailDiv").show();
+            $("#errEmailDiv").text('Email is required');
+            result = false;
+        }
+        else {
+            $("#errEmailDiv").hide();
+        }
+
+        return result;
+    }
+
+    function fnStateList() {
+        
+        var StateName = $("#ddlState");
+        StateName.empty();
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("StateData", "Locations")",
+            data: { cid: $("#ddlCountry").val() },
+            dataType: "json",
+            success: function(result) {
+                console.log(result);
+
+                StateName.append(`<option value="">-- Select State --</option>`);
+                $.each(result.stateInfosList, function (index, val) {
+                    StateName.append(`<option value="${val.sid}">${val.sName}</option>`);
+                });
+
+            },
+            error(req, status, error){
+
+            }
+        });
+
+    }
+
+</script>

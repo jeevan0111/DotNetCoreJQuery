@@ -1,0 +1,56 @@
+
+@model DotNetCoreJQuery.Models.UserInfo
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@{
+
+    if (TempData["message"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> @TempData["message"]
+            <button type="button" class="btn-close" data-bs-dism accesskeyiss="alert" aria-label="Close"></button>
+        </div>
+    }
+}
+
+
+<form method="post" >
+
+    <table>
+        <tr>
+            <td colspan="3">
+                UserName : <input type="text" id="txtName" asp-for="Name" />
+            </td>
+
+        </tr>
+        
+        <tr>
+            <td>
+                <button type="submit" asp-action="AddUser" asp-controller="User">Add User</button>
+            </td>
+            <td>
+                <button type="submit" asp-action="UpdateUser" asp-controller="User">Update User</button>
+            </td>
+            <td>
+                <button type="submit" asp-action="DeleteUser" asp-controller="User">Delete User</button>
+            </td>
+        </tr>
+    </table>
+
+    
+
+    
+
+   
+
+    
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

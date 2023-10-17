@@ -1,0 +1,87 @@
+
+@model DotNetCoreJQuery.Models.UserReg
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>User Registration</h1>
+<hr />
+
+<form method="post" asp-action="Index" asp-controller="UserReg">
+    <table>
+        <tr>
+            <td colspan="2">
+                <div asp-validation-summary="None"></div>
+            </td>
+        </tr>
+        <tr>
+            <td width="30%">
+                <label asp-for="Name">Name :</label>
+            </td>
+            <td width="70%">
+                <input asp-for="Name" id="txtName" type="text" />
+               <span asp-validation-for="Name" style="color:red"></span>
+                
+            </td>
+        </tr>
+        <tr>
+            <td width="30%">
+                <label asp-for="Address">Address :</label>
+            </td>
+            <td width="70%">
+                <input asp-for="Address" />
+                <span asp-validation-for="Address" style="color:red"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="30%">
+                <label asp-for="EmailAddress">Email Address :</label>
+            </td>
+            <td width="70%">
+                <input asp-for="EmailAddress" />
+                <span asp-validation-for="EmailAddress" style="color:red"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="30%">
+                <label asp-for="MobileNumber">Mobile Number :</label>
+            </td>
+            <td width="70%">
+                <input asp-for="MobileNumber" />
+                <span asp-validation-for="MobileNumber" style="color:red"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="30%">
+                <label asp-for="Password">Password :</label>
+            </td>
+            <td width="70%">
+                <input asp-for="Password" />
+                <span asp-validation-for="Password" style="color:red"></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="30%">
+                <label asp-for="ConfirmPassword">Confirm Password :</label>
+            </td>
+            <td width="70%">
+                <input asp-for="ConfirmPassword" />
+                <span asp-validation-for="ConfirmPassword" style="color:red"></span>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="SUBMIT" />
+            </td>
+
+        </tr>
+
+    </table>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
